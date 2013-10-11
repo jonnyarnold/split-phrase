@@ -13,6 +13,3 @@ class SayingSplitter
   end
 
 end
-
-sayings = SayingSplitter.new(saying_strings)
-puts sayings.get_saying
