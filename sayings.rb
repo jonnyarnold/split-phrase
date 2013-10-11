@@ -35,6 +35,7 @@ Birds of a feather|flock together
 Blood|is thicker than water
 Charity|begins at home
 Children|should be seen and not heard
+Curiosity|killed the cat
 Desperate times|callfor desperate measures
 Early to bed and early to rise, makes a man|healthy, wealthy and wise
 Every cloud|has a silver lining
@@ -127,6 +128,11 @@ Variety|is the spice of life
 The hills|have eyes
 The walls|have ears
 What goes up|must come down
+When the cat's away the mice|will play
+When the going gets tough, the tough|get going
+Women and children|first
+Worrying|never did anyone any good
+Youth|is wasted on the young
 SAY
 
 class SayingSplitter
