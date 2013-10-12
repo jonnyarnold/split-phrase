@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>The Proverbium</title>
+		<meta name="Description" content="A dream-space for contemplation.">
+
+		<style type="text/css">
+			@import url(http://fonts.googleapis.com/css?family=Tangerine:700);
+
+			html, body {
+				margin: 0;
+				min-height: 100%;
+			}
+
+			body {
+				background: url(lion.jpg) no-repeat right center;
+				background-size: cover;
+				background-color: #000;
+				font: 20pt sans-serif;
+				padding: 1em 2em;
+			}
+
+			#page-content {
+				font-size: 36pt;
+				margin: 1em 2em;
+				border-radius: 1em;
+				padding: 1em;
+				background-color: #FFF;
+				opacity: 0.7;
+				text-align: center;
+			}
+
+			h1 {
+				font: 36pt 'Tangerine', cursive;
+			}
+
+			a {
+				display: inline-block;
+				width: 100%;
+				text-align: right;
+				font: italic 20pt serif;
+				text-decoration: none;
+				color: #99C;
+			}
+
+			a:hover {
+				color: #66F;
+			}
+
+		</style>
+
+		<script type="text/javascript">
+		function get_saying() {
+			var xmlHttp = new XMLHttpRequest();
+	    xmlHttp.open("GET", "/saying", false);
+	    xmlHttp.send(null);
+
+	    var saying = document.getElementById("saying")
+		  saying.innerHTML = xmlHttp.responseText
+		}
+		</script>
+	</head>
+
+  <body onload="get_saying()">
+  	
+	  <div id="page-content">
+	  	<h1 id="saying">Contemplating...</h1>
+	  	<a href="javascript:get_saying()">Another</a>
+  	</div>
+  </body>
+
+</html>
