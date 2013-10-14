@@ -19,7 +19,7 @@ function changeBackground()
     if ($('#curtain').css('opacity') == 0) {
 		$('#curtain').animate({'opacity': 1}, 500, function() {
 			bgCounter = (bgCounter+1) % backgrounds.length;
-			$('body').css('background', '#000 url('+backgrounds[bgCounter]+') no-repeat right center');
+			$('body').css({'background': '#000 url('+backgrounds[bgCounter]+') no-repeat right center', 'background-size': 'cover'});
 		});
 	}
     $('#curtain').animate({'opacity': 0}, 500);
@@ -32,5 +32,6 @@ function get_saying() {
 
 	var saying = document.getElementById("saying");
 	saying.innerHTML = xmlHttp.responseText;
+
     changeBackground();
 }
