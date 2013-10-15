@@ -9,7 +9,15 @@
 var bgCounter = 0,
     backgrounds = [
        "lion.jpg",
-       "monkey.jpg"
+       "monkey.jpg",
+       "gorilla.jpg",
+       "hawk.jpg",
+       "owl.jpg",
+       "dog.jpg",
+       "tiger.jpg",
+       "polar_bear.jpg",
+       "elephant.jpg",
+       "leopard.jpg"
     ];
 
 // Changes the background based on the global above
@@ -19,7 +27,7 @@ function changeBackground()
     if ($('#curtain').css('opacity') == 0) {
 		$('#curtain').animate({'opacity': 1}, 500, function() {
 			bgCounter = (bgCounter+1) % backgrounds.length;
-			$('body').css({'background': '#000 url('+backgrounds[bgCounter]+') no-repeat right center', 'background-size': 'cover'});
+			$('body').css({'background': '#000 url(images/'+backgrounds[Math.floor(Math.random()*backgrounds.length)]+') no-repeat center', 'background-size': 'cover'});
 		});
 	}
     $('#curtain').animate({'opacity': 0}, 500);
