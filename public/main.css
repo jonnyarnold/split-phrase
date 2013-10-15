@@ -6,7 +6,7 @@ html, body {
 }
 
 body {
-	background: url(lion.jpg) no-repeat right center;
+	background: url(images/lion.jpg) no-repeat center;
 	background-size: cover;
 	background-color: #000;
 	font: 20pt sans-serif;
