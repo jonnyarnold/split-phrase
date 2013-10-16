@@ -26,8 +26,15 @@ function changeBackground()
 {
     if ($('#curtain').css('opacity') == 0) {
 		$('#curtain').animate({'opacity': 1}, 500, function() {
-			bgCounter = (bgCounter+1) % backgrounds.length;
-			$('body').css({'background': '#000 url(images/'+backgrounds[Math.floor(Math.random()*backgrounds.length)]+') no-repeat center', 'background-size': 'cover'});
+			var regexVal = new RegExp(/[\w]+.jpg(?=\)$)/);
+			var currentBackground = $('body').css('background-image').match(regexVal)[0];
+			var newBackground = backgrounds[Math.floor(Math.random()*backgrounds.length)];
+			
+			while (currentBackground == newBackground) {
+				newBackground = backgrounds[Math.floor(Math.random()*backgrounds.length)];
+			}
+			
+			$('body').css({'background': '#000 url(images/'+newBackground+') no-repeat center', 'background-size': 'cover'});
 		});
 	}
     $('#curtain').animate({'opacity': 0}, 500);
