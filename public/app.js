@@ -17,7 +17,8 @@ var bgCounter = 0,
        "tiger.jpg",
        "polar_bear.jpg",
        "elephant.jpg",
-       "leopard.jpg"
+       "leopard.jpg",
+       "cat.jpg"
     ];
 
 // Changes the background based on the global above
@@ -26,7 +27,7 @@ function changeBackground()
 {
     if ($('#curtain').css('opacity') == 0) {
 		$('#curtain').animate({'opacity': 1}, 500, function() {
-			var regexVal = new RegExp(/[\w]+.jpg(?=\)$)/);
+			var regexVal = new RegExp(/[\w]+.jpg/);
 			var currentBackground = $('body').css('background-image').match(regexVal)[0];
 			var newBackground = backgrounds[Math.floor(Math.random()*backgrounds.length)];
 			
@@ -35,7 +36,10 @@ function changeBackground()
 			}
 			
 			$('body').css({'background': '#000 url(images/'+newBackground+') no-repeat center', 'background-size': 'cover'});
+			$('#saying').animate({'opacity' : 1}, 500);
 		});
+	} else {
+		$('#saying').animate({'opacity' : 1}, 500);
 	}
     $('#curtain').animate({'opacity': 0}, 500);
 }
@@ -44,9 +48,17 @@ function get_saying() {
 	var xmlHttp = new XMLHttpRequest();
 	xmlHttp.open("GET", "/saying", false);
 	xmlHttp.send(null);
-
-	var saying = document.getElementById("saying");
-	saying.innerHTML = xmlHttp.responseText;
-
+	var fadeOutTime = 500;
+	
+	// Upon first run the animation cannot hold up the callback
+	if ($('#saying').css('opacity') == 0) {
+		fadeOutTime = 0;
+	}
+	
+	$('#saying').animate({'opacity' : 0}, fadeOutTime, function() {
+		var saying = document.getElementById("saying");
+		saying.innerHTML = xmlHttp.responseText;
+	});
+	
     changeBackground();
 }
