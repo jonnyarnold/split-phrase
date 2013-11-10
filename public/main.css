@@ -50,6 +50,8 @@ a {
 	font: italic 20pt serif;
 	text-decoration: none;
 	color: #99C;
+	border: 0;
+	outline: 0;
 }
 
 a:hover {
