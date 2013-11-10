@@ -1,10 +1,11 @@
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+// Google Analytics
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-44805097-1', 'young-escarpment-2304.herokuapp.com');
-  ga('send', 'pageview');
+ga('create', 'UA-44805097-1', 'young-escarpment-2304.herokuapp.com');
+ga('send', 'pageview');
   
 var bgCounter = 0,
     backgrounds = [
@@ -56,9 +57,20 @@ function get_saying() {
 	}
 	
 	$('#saying').animate({'opacity' : 0}, fadeOutTime, function() {
-		var saying = document.getElementById("saying");
-		saying.innerHTML = xmlHttp.responseText;
+		$('#saying').html(xmlHttp.responseText);
+		$('#tweet').attr('href', generate_tweet_url(xmlHttp.responseText))
 	});
 	
     changeBackground();
+}
+
+// Creates a Twitter Share URL for use on a Tweet button
+// as documented @ https://dev.twitter.com/docs/tweet-button
+function generate_tweet_url(saying) {
+	url = window.location.origin
+	tweet_text = "\"" + saying + "\" -- via " + url
+
+	return "https://twitter.com/share" +
+		"?url=" + url +
+		"&text=" + encodeURIComponent(tweet_text)
 }
