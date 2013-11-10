@@ -68,8 +68,9 @@ function get_saying() {
 // as documented @ https://dev.twitter.com/docs/tweet-button
 function generate_tweet_url(saying) {
 	url = window.location.origin
-	tweet_text = "\"" + saying + "\" -- via " + url
+	tweet_text = "\"" + saying + "\" -- via " // Twitter adds URL automatically
 
 	return "https://twitter.com/share" +
-		"?text=" + encodeURIComponent(tweet_text)
+		"?url=" + url +"
+		?text=" + encodeURIComponent(tweet_text)
 }
