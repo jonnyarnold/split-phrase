@@ -71,6 +71,5 @@ function generate_tweet_url(saying) {
 	tweet_text = "\"" + saying + "\" -- via " + url
 
 	return "https://twitter.com/share" +
-		"?url=" + url +
-		"&text=" + encodeURIComponent(tweet_text)
+		"?text=" + encodeURIComponent(tweet_text)
 }
