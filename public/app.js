@@ -6,38 +6,17 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 
 ga('create', 'UA-44805097-1', 'young-escarpment-2304.herokuapp.com');
 ga('send', 'pageview');
-  
-var bgCounter = 0,
-    backgrounds = [
-       "lion.jpg",
-       "monkey.jpg",
-       "gorilla.jpg",
-       "hawk.jpg",
-       "owl.jpg",
-       "dog.jpg",
-       "tiger.jpg",
-       "polar_bear.jpg",
-       "elephant.jpg",
-       "leopard.jpg",
-       "cat.jpg"
-    ];
 
-// Changes the background based on the global above
-// TODO: Get rid of global
+// Changes the background from AJAX call
 function changeBackground()
 {
     if ($('#curtain').css('opacity') == 0) {
 		$('#curtain').animate({'opacity': 1}, 500, function() {
-			var regexVal = new RegExp(/[\w]+.jpg/);
-			var currentBackground = $('body').css('background-image').match(regexVal)[0];
-			var newBackground = backgrounds[Math.floor(Math.random()*backgrounds.length)];
-			
-			while (currentBackground == newBackground) {
-				newBackground = backgrounds[Math.floor(Math.random()*backgrounds.length)];
-			}
-			
-			$('body').css({'background': '#000 url(images/'+newBackground+') no-repeat center', 'background-size': 'cover'});
-			$('#saying').animate({'opacity' : 1}, 500);
+      $.get('/bg', function(bg) {
+        var newBackground = bg;
+        $('body').css({'background': '#000 url('+newBackground+') no-repeat center', 'background-size': 'cover'});
+        $('#saying').animate({'opacity' : 1}, 500);
+      })
 		});
 	} else {
 		$('#saying').animate({'opacity' : 1}, 500);
