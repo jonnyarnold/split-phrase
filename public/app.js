@@ -11,13 +11,16 @@ ga('send', 'pageview');
 function changeBackground()
 {
     if ($('#curtain').css('opacity') == 0) {
-		$('#curtain').animate({'opacity': 1}, 500, function() {
       $.get('/bg', function(bg) {
         var newBackground = bg;
-        $('body').css({'background': '#000 url('+newBackground+') no-repeat center', 'background-size': 'cover'});
-        $('#saying').animate({'opacity' : 1}, 500);
-      })
-		});
+
+        $('#curtain').animate({'opacity': 1}, 500, function() {
+          $('body').css({'background': '#000 url('+newBackground+') no-repeat center', 'background-size': 'cover'});
+          $('#saying').animate({'opacity' : 1}, 500);
+            });
+        });
+      }
+		
 	} else {
 		$('#saying').animate({'opacity' : 1}, 500);
 	}
