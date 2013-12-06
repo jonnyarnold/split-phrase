@@ -13,6 +13,6 @@ get '/saying' do
 end
 
 get '/bg' do
-  chosen_path = Dir[settings.public_folder + '/images/*.jpg'].sample # Take a random image
-  chosen_path[(settings.public_folder.length+1)..-1] # Take off the public folder and /
+  chosen_path = Dir['public/images/*.jpg'].sample # Take a random image
+  chosen_path['public/'.length..-1]
 end
